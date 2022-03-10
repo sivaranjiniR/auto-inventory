@@ -53,3 +53,23 @@ var update_data = function (event) {
     });
 }
 
+var view_data = function (event) {
+    var carid= document.getElementById('carid').value;
+    var input_json ={
+        'car_id': carid
+    };
+    $.ajax({
+        url: '/viewdata',
+        data: JSON.stringify(input_json),
+        dataType: "json",
+        contentType: "application/json;charset=utf-8",
+        type: 'POST',
+        success: function(output) {
+            console.log(output);
+            console.log(output.make);
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+}
