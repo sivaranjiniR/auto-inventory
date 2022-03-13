@@ -59,7 +59,8 @@ def viewdata():
         cur.close()
         output = {
             'make': data[0][0],
-            'model': data[0][1]
+            'model': data[0][1],
+            'year':data[0][2]
         }
         return output
     return render_template('/view.html')

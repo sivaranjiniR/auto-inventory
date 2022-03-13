@@ -11,22 +11,26 @@
         <link rel="stylesheet" type="text/css" href="../static/css/insert_styles.css">
     </head>
     <body>
-        <p> View Auto-Inventory Details </p>
-        <div class="form-insert">
-            <label for="carid">Enter your Car-ID: </label>
-            <input type="text" name="carid" id="carid" >
+        <div class="view_page">
+            <h3> View Auto-Inventory Details </h3>
+            <div class="form-insert">
+                <label for="carid">Enter your Car-ID: </label>
+                <input type="text" name="carid" id="carid" >
+            </div>
+            <div class="form-insert">
+                <button type="submit" value="GetDetails" onclick= "view_data()" >Submit</button>
+            </div>
+            <div class="styled-table">
+                <table id="records_table" border='1' class="center">
+                    <thead>
+                        <tr>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Year</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
-        <div class="form-insert">
-            <button type="submit" value="Submit" onclick= "view_data()" id="submit">Submit</button>
-        </div>
-        <table border="1" cellpadding="5" cellspacing="5">
-            <th>
-                <td>Make</td>
-                <td>Model</td>
-                <td>Year</td>
-            </th>
-
-        
-        </table>
     </body>
 </html>

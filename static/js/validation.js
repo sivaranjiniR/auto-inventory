@@ -64,9 +64,15 @@ var view_data = function (event) {
         dataType: "json",
         contentType: "application/json;charset=utf-8",
         type: 'POST',
-        success: function(output) {
-            console.log(output);
-            console.log(output.make);
+        success: function (response) {
+            console.log(response.make)
+            console.log(response.model)
+            console.log(response.year)
+            var trHTML = '';
+            
+            trHTML += '<tr><td>' + response.make + '</td><td>' + response.model + '</td><td>' + response.year+ '</td></tr>';
+           
+            $('#records_table').append(trHTML);
         },
         error: function(error) {
             console.log(error);
