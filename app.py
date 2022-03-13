@@ -47,6 +47,23 @@ def updatedata():
         return render_template('/update.html', data = data)    
     return render_template('/update.html')
      
-
+@app.route('/viewdata', methods=['GET', 'POST'])
+def viewdata():
+    if request.method == 'POST':
+        details = request.get_json()
+        carid = details['car_id']
+        cur = mydb.cursor()
+        cur.execute("SELECT car_make AS make,car_model AS model,car_year AS year FROM CarInsert WHERE car_id = %s",(carid,))
+        data = cur.fetchall()
+        mydb.commit()
+        cur.close()
+        output = {
+            'make': data[0][0],
+            'model': data[0][1],
+            'year':data[0][2]
+        }
+        return output
+    return render_template('/view.html')
+     
 if __name__ == '__main__':
     app.run()

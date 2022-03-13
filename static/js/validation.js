@@ -53,3 +53,29 @@ var update_data = function (event) {
     });
 }
 
+var view_data = function (event) {
+    var carid= document.getElementById('carid').value;
+    var input_json ={
+        'car_id': carid
+    };
+    $.ajax({
+        url: '/viewdata',
+        data: JSON.stringify(input_json),
+        dataType: "json",
+        contentType: "application/json;charset=utf-8",
+        type: 'POST',
+        success: function (response) {
+            console.log(response.make)
+            console.log(response.model)
+            console.log(response.year)
+            var trHTML = '';
+            
+            trHTML += '<tr><td>' + response.make + '</td><td>' + response.model + '</td><td>' + response.year+ '</td></tr>';
+           
+            $('#records_table').append(trHTML);
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+}
